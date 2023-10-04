@@ -22,7 +22,7 @@ function ViewProduct() {
       .then(() => {
         // Dispatch the action to delete the customer from your Redux store
         dispatch(deleteProduct(id));
-        // console.log(id);
+        console.log(id);
       })
       .catch((error) => {
         console.error('Error deleting product:', error);
@@ -62,7 +62,7 @@ function ViewProduct() {
                 <td>{product.productPrice}</td>
                 <td>{product.rating}</td>
                 <td>
-                  <Link to={`/editCustomer/${customer.id}`}>Update</Link>
+                  <Link to={`/editProduct/${customer.id}/products/${product.id}`}>Update</Link>
                   <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
                 </td>
               </tr>

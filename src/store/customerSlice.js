@@ -7,6 +7,8 @@ const initialState = {
   //   { id: 3, name: 'Shivi', address: 'Dewas', contact: '42616' },
   // ],
   customers:[],
+  activeComponent:'AddCustomer',
+  activeEditCustomerId: '',
 };
 
 const customerSlice = createSlice({
@@ -44,8 +46,20 @@ const customerSlice = createSlice({
         customers: action.payload,
       };
     },
+    setActiveComponent: (state, action) => {
+      return {
+        ...state,
+        activeComponent: action.payload,
+      };
+    },
+    setEditCustomerId: (state, action) => {
+      return {
+        ...state,
+        activeEditCustomerId: action.payload,
+      };
+    },
   },
 });
 
-export const { addCustomer, updateCustomer, deleteCustomer, setCustomers } = customerSlice.actions;
+export const { addCustomer, updateCustomer, deleteCustomer, setCustomers, setActiveComponent, setEditCustomerId } = customerSlice.actions;
 export default customerSlice.reducer;

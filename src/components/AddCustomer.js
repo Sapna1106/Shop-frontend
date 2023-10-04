@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addCustomer } from '../store/customerSlice';
 import './addForm.css'; 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function AddCustomer() {
   const [customerData, setCustomerData] = useState({
@@ -11,6 +12,7 @@ function AddCustomer() {
     contact: '',
   });
 
+  let navigate= useNavigate();
   const dispatch = useDispatch();
 
   const handleAddCustomer = async () => {
@@ -26,6 +28,8 @@ function AddCustomer() {
         dispatch(addCustomer(newCustomer));
 
         setCustomerData({ customerName: '', address: '', contact: '' }); 
+        navigate("/");
+      
       } catch (error) {
         console.error('Error saving customer data:', error);
       }
@@ -72,6 +76,8 @@ function AddCustomer() {
           />
         </div>
         <button type="button" onClick={handleAddCustomer}>Submit</button>
+
+
       </form>
     </div>
   );
