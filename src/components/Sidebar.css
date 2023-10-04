@@ -1,0 +1,39 @@
+/* Sidebar Container */
+.sidebar {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding-top: 20px;
+    padding-left: 10px;
+  }
+  
+  /* Sidebar List Items */
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px 0;
+    cursor: pointer;
+  }
+  
+  .sidebar ul li:hover {
+    background-color: #555;
+  }
+  
+  /* Active Sidebar Item */
+  .sidebar ul li.active {
+    background-color: #007bff;
+  }
+  
+  /* Content Area */
+  .content {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  

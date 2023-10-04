@@ -1,0 +1,119 @@
+/* Styling for the form container */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* StylingCustomer for form elements */
+  .form-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-container button {
+    background-color: #0c0c0c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form-container button:hover {
+    background-color: #698fb8;
+  }
+  
+  /* Styling for the form heading */
+  .form-heading {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for error messages */
+  .error-message {
+    color: #ff0000;
+    margin-top: 5px;
+  }
+  
+  /* Styling for the customer list */
+  .list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .info {
+    flex: 1;
+  }
+  
+  .actions button {
+    background-color: #1c1c1d;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  
+  .actions button:hover {
+    background-color: #4aaac7;
+  }
+   
+  
+  /* *********************************************/
+  .customer-list-container {
+    margin: 20px; /* Add margin to create space from the sidebar */
+    margin-left: 18%; /* Set the left margin to 20% of the width */
+    padding: 20px;
+    background-color: #ffffff; /* Set a background color to the container */
+    border-radius: 5px; /* Add rounded corners for a card-like appearance */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a slight shadow for depth */
+    overflow-x: auto; /* Enable horizontal scrolling if the table is too wide */
+  }
+  
+  .customer-table {
+    width: 100%; /* Set the table width to 100% */
+    border-collapse: collapse;
+    margin-top: 20px; /* Add margin to separate the table from the heading */
+  }
+  
+  .customer-table th,
+  .customer-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .customer-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .customer-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .customer-table tr:hover {
+    background-color: #ddd;
+  }
+  
