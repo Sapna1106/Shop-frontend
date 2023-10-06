@@ -1,28 +1,45 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import './list.css';
-import { deleteProduct } from '../store/productSlice';
+import { deleteProduct, setProducts } from '../store/customerSlice';
 import axios from 'axios';
 
 function ViewProduct() {
   const { id } = useParams();
+  // console.log(id);
   const { customers } = useSelector((state) => state.customers);
   const customer = customers.find((c) => c.id === parseInt(id, 10));
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    loadProduct();
+  },[id]);
+
+  const loadProduct = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8888/customers/${id}/products`
+      );
+      const products = response.data;
+      dispatch(setProducts({ customerId: parseInt(id, 10), products }));
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+    }
+  };
+
   if (!customer) {
-    return <div>Customer not found.</div>;
+    return <div>Customer not found: {id}</div>;
   }
 
-  const handleDeleteProduct = (id) => {
-    // Send a DELETE request to remove the customer at the backend
+  const handleDeleteProduct = (pId) => {
     axios
-      .delete(`http://localhost:8888/customers/products/${id}`)
+      .delete(`http://localhost:8888/customers/products/${pId}`)
       .then(() => {
-        // Dispatch the action to delete the customer from your Redux store
-        dispatch(deleteProduct(id));
-        console.log(id);
+        console.log("hii");
+        dispatch(deleteProduct({id,pId}));
+        console.log("hlw");
+        // navigate(`/viewProduct/${id}`);
       })
       .catch((error) => {
         console.error('Error deleting product:', error);
@@ -74,7 +91,7 @@ function ViewProduct() {
         )}
       </tbody>
       </table>
-      <Link to="/">Back to Customer List</Link>
+      <Link to="/customerList">Back to Customer List</Link>
     </div>
   );
 }

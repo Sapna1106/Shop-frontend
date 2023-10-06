@@ -64,7 +64,7 @@
   
   .info {
     flex: 1;
-  }
+  }        
   
   .actions button {
     background-color: #1c1c1d;
@@ -95,7 +95,7 @@
   .customer-table {
     width: 100%; /* Set the table width to 100% */
     border-collapse: collapse;
-    margin-top: 20px; /* Add margin to separate the table from the heading */
+    margin-top: 20px; /* Add         margin to separate the table from the heading */
   }
   
   .customer-table th,

@@ -2,8 +2,8 @@ import {createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     products: [
-      { id: 1, name: 'Laptop', description: 'Dell', price: '42616', rating:'4' },
-      { id: 2, name: 'Ear-buds', description: 'Sony', price: '3000', rating:'3' },
+    //   { id: 1, name: 'Laptop', description: 'Dell', price: '42616', rating:'4' },
+    //   { id: 2, name: 'Ear-buds', description: 'Sony', price: '3000', rating:'3' },
     ],
   };
 
@@ -19,6 +19,7 @@ const productSlice = createSlice({
         },
         updateProduct:(state,action) =>{
             const {id,updatedProduct } = action.payload;
+
             return {
                 ...state,
                 products: state.products.map((product) =>
@@ -26,19 +27,13 @@ const productSlice = createSlice({
               ),
               };
         },
-        deleteProduct:(state,action)=>{
-            const id=action.payload;
-            // console.log(id);
-            return{
-                ...state,
-                products: state.products.filter((product) => product.id !== id),
-            };
-        },
+       
+            
     },
 });
 export const { 
     addProduct,
     updateProduct,
-    deleteProduct,
+
 } = productSlice.actions;
 export default productSlice.reducer;

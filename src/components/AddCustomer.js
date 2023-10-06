@@ -18,17 +18,14 @@ function AddCustomer() {
   const handleAddCustomer = async () => {
     if (customerData.customerName && customerData.address && customerData.contact) {
       try {
-        // Send a POST request to backend API to save the customer data
         const response = await axios.post('http://localhost:8888/customers/', customerData);
 
-        //backend returns the newly added customer data with an ID
         const newCustomer = response.data;
 
-        // Dispatch the action to add new customer to your Redux store
         dispatch(addCustomer(newCustomer));
 
         setCustomerData({ customerName: '', address: '', contact: '' }); 
-        navigate("/");
+        navigate("/customerList");
       
       } catch (error) {
         console.error('Error saving customer data:', error);
@@ -76,8 +73,6 @@ function AddCustomer() {
           />
         </div>
         <button type="button" onClick={handleAddCustomer}>Submit</button>
-
-
       </form>
     </div>
   );

@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { updateProduct } from "../store/customerSlice";
+import { useDispatch } from "react-redux";
 
 function EditProduct() {
   let navigate = useNavigate();
-
-  const { id } = useParams();
-
-  //  console.log(id);
+  const dispatch = useDispatch();
+  const { cId, pId } = useParams();
+  const customerId = parseInt(cId, 10);
+  // console.log(id);
   useEffect(() => {
     loadProduct();
   }, []);
@@ -22,37 +24,30 @@ function EditProduct() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.put(
-      `http://localhost:8888/customers/${id}/products/${productData.id}`,
+      `http://localhost:8888/customers/${cId}/products/${pId}`,
       productData
     );
-    navigate(`/viewProduct/${id}`);
+    dispatch(updateProduct({ id: customerId, updatedProduct: productData }));
+    // console.log(cId);
+    navigate(`/viewProduct/${cId}`);
   };
 
-  const loadProduct = async (e) => {
+  const loadProduct = async () => {
     const result = await axios.get(
-      `http://localhost:8888/customers/${id}/products/${id}`
+      `http://localhost:8888/customers/${cId}/products/${pId}`
     );
     // console.log(id);
     setProductData(result.data);
   };
 
-  const handleCancelUpdate = () => {
-    setProductData({
-      productName: "",
-      productDesc: "",
-      productPrice: "",
-      rating: "",
-    });
-    navigate(`/viewProduct/${id}`);
-  };
-
   return (
     <div>
       <form onSubmit={(e) => onSubmit(e)}>
-        {id !== null && (
+        {pId !== null && (
           <div className="form-container">
             <h2 className="form-heading">Edit Product</h2>
             <div>
+              <label htmlFor="productName">Product Name:</label>
               <input
                 className="form-input"
                 type="text"
@@ -65,6 +60,7 @@ function EditProduct() {
                   })
                 }
               />
+              <label htmlFor="productDesc">Description:</label>
               <input
                 className="form-input"
                 type="text"
@@ -77,6 +73,7 @@ function EditProduct() {
                   })
                 }
               />
+              <label htmlFor="productPrice">Price:</label>
               <input
                 className="form-input"
                 type="text"
@@ -89,6 +86,7 @@ function EditProduct() {
                   })
                 }
               />
+              <label htmlFor="rating">Rating:</label>
               <input
                 className="form-input"
                 type="text"
@@ -101,7 +99,7 @@ function EditProduct() {
               <button className="form-button">Update Product</button>
               <button
                 className="form-button cancel-button"
-                onClick={handleCancelUpdate}
+                onClick={() => navigate(`/viewProduct/${cId}`)}
               >
                 Cancel
               </button>
